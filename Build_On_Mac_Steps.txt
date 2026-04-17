@@ -1,0 +1,165 @@
+BUILD ON MAC STEPS
+==================
+
+Date:
+April 9, 2026
+
+This guide explains how to take the Lotto Wizard iPhone app folder to a Mac and open it in Xcode.
+
+
+1. COPY THE IOS FOLDER TO THE MAC
+---------------------------------
+
+Copy this folder from Windows:
+
+C:\Users\User\Documents\LottoWizard\ios-app
+
+Put it somewhere on the Mac, for example:
+
+/Users/yourname/Desktop/LottoWizard/ios-app
+
+
+2. OPEN THE PROJECT IN XCODE
+----------------------------
+
+On the Mac, open:
+
+ios-app/LottoWizardIOS.xcodeproj
+
+Do not open a random file.
+Open the `.xcodeproj` file.
+
+
+3. CHECK XCODE SIGNING
+----------------------
+
+In Xcode:
+
+1. Click the project name `LottoWizardIOS`
+2. Click the target `LottoWizardIOS`
+3. Open the `Signing & Capabilities` tab
+4. Choose your Apple team
+5. Let Xcode manage signing automatically
+
+Important:
+
+You must have an Apple developer account connected in Xcode for device builds and App Store publishing later.
+
+
+4. CHECK THE BUNDLE ID
+----------------------
+
+In Xcode, under the target settings, check:
+
+- Bundle Identifier
+
+Default value is:
+
+- com.timesentrysolutions.lottowizard.ios
+
+If needed, change it to your final bundle id.
+
+
+5. SET THE START URL
+--------------------
+
+Open this file in Xcode:
+
+LottoWizardIOS/LottoWizardConfig.swift
+
+You will see:
+
+- debug URL
+- release URL
+
+For local simulator testing on the Mac:
+
+- debug already points to `http://127.0.0.1:8080/mobile-app/?shell=1&native=ios`
+
+For live release:
+
+- change the release URL to your real hosted mobile page
+
+Example:
+
+- https://lottowizard.net/mobile-app/?shell=1&native=ios
+
+
+6. IF YOU WANT TO TEST LOCALLY ON THE MAC
+----------------------------------------
+
+On the Mac, from the full Lotto Wizard project folder, run:
+
+1. start the backend:
+
+python3 -m backend.server
+
+2. in a second terminal, serve the frontend:
+
+python3 -m http.server 8080 -d frontend
+
+Then run the iOS app in the Simulator.
+
+
+7. IF YOU ONLY WANT TO TEST THE LIVE HOSTED VERSION
+---------------------------------------------------
+
+If the hosted mobile site is already live:
+
+1. update the release URL in `LottoWizardConfig.swift`
+2. choose a device or simulator in Xcode
+3. press Run
+
+That is the easiest path once the live domain is ready.
+
+
+8. FIRST BUILD TEST
+-------------------
+
+In Xcode:
+
+1. choose an iPhone simulator
+2. press the Run button
+3. wait for the app to open
+
+What should happen:
+
+- the Lotto Wizard app opens
+- the hosted/mobile page loads inside it
+- the reload button appears at the top
+
+
+9. IF IT DOES NOT LOAD
+----------------------
+
+Check these first:
+
+- is the local preview server running?
+- is the backend running?
+- is the URL in `LottoWizardConfig.swift` correct?
+- is the hosted site live if you are using the hosted URL?
+
+
+10. BEFORE APP STORE PUBLISHING
+-------------------------------
+
+Before a proper App Store release, you should still do these:
+
+- replace the placeholder AppIcon set with final branded icons
+- confirm the final bundle id
+- confirm signing works
+- test on a real iPhone
+- review Apple App Store submission requirements
+
+
+11. SIMPLE SUMMARY
+------------------
+
+On the Mac:
+
+1. copy `ios-app`
+2. open `LottoWizardIOS.xcodeproj`
+3. set your Apple team
+4. check the bundle id
+5. set the release URL
+6. run it in the Simulator

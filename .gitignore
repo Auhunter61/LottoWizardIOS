@@ -1,0 +1,9 @@
+/build
+/.idea
+/*.xcworkspace
+xcuserdata
+DerivedData
+.DS_Store
+*.mode1v3
+*.mode2v3
+*.perspectivev3
