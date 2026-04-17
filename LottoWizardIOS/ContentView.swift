@@ -30,7 +30,13 @@ struct ContentView: View {
 
     private var statusBar: some View {
         VStack(spacing: 8) {
-            HStack {
+            HStack(spacing: 12) {
+                Image("BrandMark")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 34, height: 34)
+                    .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+
                 VStack(alignment: .leading, spacing: 4) {
                     Text("Lotto Wizard")
                         .font(.headline)
@@ -63,9 +69,12 @@ struct ContentView: View {
 
     private var setupView: some View {
         VStack(spacing: 18) {
-            Image(systemName: "iphone.gen3.radiowaves.left.and.right")
-                .font(.system(size: 52))
-                .foregroundStyle(Color(red: 0.27, green: 0.65, blue: 0.93))
+            Image("BrandMark")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 150, height: 150)
+                .clipShape(RoundedRectangle(cornerRadius: 34, style: .continuous))
+                .shadow(color: Color.black.opacity(0.22), radius: 18, y: 10)
 
             Text("Lotto Wizard for iPhone is ready")
                 .font(.largeTitle.weight(.bold))
